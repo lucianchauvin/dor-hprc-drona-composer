@@ -33,6 +33,7 @@
  *
  * @property {Object} elements - Object of field configuration objects to be rendered in the container
  * @property {string} [title="Collapsible Row Container"] - Title displayed in the container header
+ * @property {('collapsed'|'expanded')} [default_state="expanded"] - Initial visibility state
  */
 
 import React, { useState } from "react";
@@ -82,10 +83,11 @@ function CollapsibleRowContainer({
   currentValues,
   setError,
   title = "Collapsible Row Container",
+  default_state = "expanded",
   ...props
 }) {
-  const [isCollapsed, setIsCollapsed] = useState(props.isCollapsed || false);
-  
+  const [isCollapsed, setIsCollapsed] = useState(default_state === "collapsed");
+
   function toggleCollapse(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -133,8 +135,9 @@ function CollapsibleColContainer({
   currentValues,
   setError,
   title = "Collapsible Column Container",
+  default_state = "expanded",
 }) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(default_state === "collapsed");
   
   function toggleCollapse(e) {
     e.preventDefault();
