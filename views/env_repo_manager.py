@@ -40,17 +40,13 @@ class EnvironmentRepoManager:
             metadata = json.load(f)
             return self._transform_metadata(metadata, cluster_name)
 
-    def _transform_metadata(self, metadata: Dict, cluster_name: str = None) -> List[Dict]:
+    def _transform_metadata(self, metadata: Dict) -> List[Dict]:
         """
         Transforms the metadata.json format to match the expected format.
         Optionally filters by cluster name
         """
         transformed = []
         for env_name, env_data in metadata.items():
-            # Skip if cluster name is specified and doesn't match
-            #if cluster_name and env_data.get("cluster", "").lower() != cluster_name.lower():
-            #    continue
-
             env_info = {
                 "env": env_name,
                 "description": env_data.get("description", "No description available"),

@@ -64,7 +64,6 @@ def add_environment_route():
             details={'error': 'The "env" parameter is required'}
         )
 
-    cluster_name = app.config['cluster_name']
     repo_manager = EnvironmentRepoManager(
             repo_url=app.config['env_repo_github'],
             repo_dir="./environments-repo"
